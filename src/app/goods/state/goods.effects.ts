@@ -1,21 +1,22 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { Observable, of } from 'rxjs';
-import { mergeMap, map, catchError } from 'rxjs/operators';
-import { Product } from '../goods';
+import {Observable, of} from 'rxjs';
+import {mergeMap, map, catchError} from 'rxjs/operators';
+import {Product} from '../goods';
 
-import { GoodsService } from '../goods.service';
+import {GoodsService} from '../goods.service';
 
 /* NgRx */
-import { Action } from '@ngrx/store';
-import { Actions, Effect, ofType } from '@ngrx/effects';
+import {Action} from '@ngrx/store';
+import {Actions, Effect, ofType} from '@ngrx/effects';
 import * as productActions from './goods.actions';
 
 @Injectable()
 export class GoodsEffects {
 
   constructor(private goodsService: GoodsService,
-              private actions$: Actions) { }
+              private actions$: Actions) {
+  }
 
   @Effect()
   loadProducts$: Observable<Action> = this.actions$.pipe(

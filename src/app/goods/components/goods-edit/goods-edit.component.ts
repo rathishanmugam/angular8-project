@@ -8,20 +8,20 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { Product } from '../../goods';
-import { GoodsService } from '../../goods.service';
-import { GenericValidator } from '../../../shared/generic-validator';
-import { NumberValidators } from '../../../shared/number.validator';
+import {Product} from '../../goods';
+import {GoodsService} from '../../goods.service';
+import {GenericValidator} from '../../../shared/generic-validator';
+import {NumberValidators} from '../../../shared/number.validator';
 
-import { takeWhile } from 'rxjs/operators';
+import {takeWhile} from 'rxjs/operators';
 
 /* NgRx */
-import { Store, select } from '@ngrx/store';
+import {Store, select} from '@ngrx/store';
 import * as fromProduct from '../../state';
 import * as productActions from '../../state/goods.actions';
-import { Observable, of } from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 @Component({
   selector: 'app-goods-edit',
@@ -155,7 +155,7 @@ export class GoodsEditComponent implements OnInit, OnDestroy {
         // Copy over all of the original product properties
         // Then copy over the values from the form
         // This ensures values not on the form, such as the Id, are retained
-        const p = { ...this.product, ...this.productForm.value };
+        const p = {...this.product, ...this.productForm.value};
         if (p.id === 0) {
           this.store.dispatch(new productActions.CreateProduct(p));
           // this.goodsService.createProduct(p).subscribe(

@@ -1,6 +1,7 @@
-import { Product } from '../goods';
+import {Product} from '../goods';
 /* NgRx */
-import { ProductActions, ProductActionTypes } from './goods.actions';
+import {ProductActions, ProductActionTypes} from './goods.actions';
+
 // State for this feature (Product)
 export interface ProductState {
   showProductCode: boolean;

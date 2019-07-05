@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Product} from '../goods';
-import {GoodsService} from '../goods.service';
 /* NgRx */
-import {takeWhile} from 'rxjs/operators';
 import * as fromProduct from './../state';
 import * as productActions from './../state/goods.actions';
-import { Observable } from 'rxjs';
-import {Store, select} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {select, Store} from '@ngrx/store';
 
 @Component({
-  templateUrl: './goods.component.html'
+  templateUrl: './goods.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GoodsComponent implements OnInit {
   displayCode$: Observable<boolean>;
