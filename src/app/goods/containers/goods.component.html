@@ -1,0 +1,23 @@
+<div class='row'>
+  <div class='col-md-4'>
+    <app-goods-list
+      [displayCode]="displayCode$ | async"
+      [products]="products$ | async"
+      [selectedProduct]="selectedProduct$ | async"
+      [errorMessage]="errorMessage$ | async"
+      (checked)="checkChanged($event)"
+      (initializeNewProduct)="(newProduct())"
+      (selected)="productSelected($event)">
+    </app-goods-list>
+  </div>
+  <div class='col-md-8'>
+    <app-goods-edit
+      [selectedProduct]="selectedProduct$ | async"
+      [errorMessage]="errorMessage$ | async"
+      (clearCurrent)="clearProduct()"
+      (update)="updateProduct($event)"
+      (delete)="deleteProduct($event)"
+      (create)="saveProduct($event)">
+    </app-goods-edit>
+  </div>
+</div>

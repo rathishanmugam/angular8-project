@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+    <form novalidate autocomplete = "off"
+          (ngSubmit)="login(loginForm)"
+          #loginForm = 'ngForm'>
+      <fieldset>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label"
+                 for='userNameId'>User Name</label>
+          <div class="col-md-8">
+        <input class="form-control"
+               type="text" id="userNameId"
+               placeholder="User Name Required"
+               required="required"
+               ngModel
+               name ='userNam'
+               #userNameVar = 'ngModel'
+               [ngClass]="{'is-invalid':(userNameVar.touched || userNameVar.dirty || userNameVar.invalid) && !userNameVar.valid}"/>
+          <span *ngIf="(userNameVar.touched && userNameVar.errors)?.required">User  Name Required</span>
+        </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label"
+                 for='passwordId'>Password</label>
+          <div class="col-md-8">
+          <input class="form-control"
+                 type="text" id="passwordId"
+                 placeholder="Password Required"
+                 required="required"
+                 ngModel
+                 name ='password'
+                 #passwordVar = 'ngModel'
+                 [ngClass]="{'is-invalid':(passwordVar.touched || passwordVar.dirty || passwordVar.invalid) && !passwordVar.valid}"/>
+          <span *ngIf="(passwordVar.touched && passwordVar).errors?.required">password Required</span>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-2">
+            <button class="btn btn-primary mr-3"
+            type="submit" style="width: 80px;" [disabled]="!loginForm.valid">
+              Login
+            </button>
+            <button class="btn btn-outline-secondary" type="button" style="width: 80px;">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+</div>
